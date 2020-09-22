@@ -1742,6 +1742,10 @@ export abstract class Layout extends Disposable implements IWorkbenchLayoutServi
 		this._onPanelPositionChange.fire(newPositionValue);
 	}
 
+	getPanelHidden(): boolean {
+		return this.state.panel.hidden;
+	}
+
 	isWindowMaximized() {
 		return this.state.maximized;
 	}
