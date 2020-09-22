@@ -1742,7 +1742,7 @@ export abstract class Layout extends Disposable implements IWorkbenchLayoutServi
 		this._onPanelPositionChange.fire(newPositionValue);
 	}
 
-	getPanelHidden(): boolean {
+	isPanelHidden(): boolean {
 		return this.state.panel.hidden;
 	}
 
