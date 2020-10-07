@@ -84,7 +84,13 @@ Registry.as<IViewsRegistry>(ViewContainerExtensions.ViewsRegistry).registerViews
 const actionRegistry = Registry.as<IWorkbenchActionRegistry>(ActionExtensions.WorkbenchActions);
 registerTerminalActions();
 const category = TERMINAL_ACTION_CATEGORY;
-actionRegistry.registerWorkbenchAction(SyncActionDescriptor.from(KillTerminalAction), 'Terminal: Kill the Active Terminal Instance', category, KEYBINDING_CONTEXT_TERMINAL_PROCESS_SUPPORTED);
+actionRegistry.registerWorkbenchAction(SyncActionDescriptor.from(KillTerminalAction, {
+	primary: KeyMod.CtrlCmd | KeyCode.KEY_W,
+	win: {
+		primary: KeyMod.CtrlCmd | KeyCode.F4,
+		secondary: [KeyMod.CtrlCmd | KeyCode.KEY_W]
+	}
+}), 'Terminal: Kill the Active Terminal Instance', category, KEYBINDING_CONTEXT_TERMINAL_PROCESS_SUPPORTED);
 actionRegistry.registerWorkbenchAction(SyncActionDescriptor.from(CreateNewTerminalAction, {
 	primary: KeyMod.CtrlCmd | KeyMod.Shift | KeyCode.US_BACKTICK,
 	mac: { primary: KeyMod.WinCtrl | KeyMod.Shift | KeyCode.US_BACKTICK }
